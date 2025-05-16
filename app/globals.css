@@ -1,0 +1,344 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 222 63% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 32 96% 54%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 222 47% 21%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 32 96% 54%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 47% 21%;
+    --input: 222 47% 21%;
+    --ring: 32 96% 54%;
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 63% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 32 96% 54%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 32 96% 54%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 63% 24%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #0a1128; /* Fondo azul oscuro UPSLP */
+  overflow-x: hidden;
+}
+
+/* Mejorar la experiencia con el teclado virtual */
+input,
+textarea,
+[contenteditable="true"] {
+  /* Asegurar que el elemento con foco sea visible */
+  scroll-margin-bottom: 80px;
+}
+
+/* Efectos de brillo adaptados a los colores de UPSLP */
+.glow-text {
+  text-shadow: 0 0 10px rgba(26, 43, 95, 0.7), 0 0 20px rgba(26, 43, 95, 0.5), 0 0 30px rgba(26, 43, 95, 0.3);
+}
+
+.glow-icon {
+  filter: drop-shadow(0 0 8px rgba(247, 148, 29, 0.7)) drop-shadow(0 0 16px rgba(247, 148, 29, 0.5));
+}
+
+.glow-button {
+  box-shadow: 0 0 10px rgba(247, 148, 29, 0.5), 0 0 20px rgba(247, 148, 29, 0.3);
+}
+
+.navbar-glow {
+  box-shadow: 0 0 15px rgba(26, 43, 95, 0.6), 0 0 30px rgba(26, 43, 95, 0.3);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(247, 148, 29, 0.7), 0 0 30px rgba(247, 148, 29, 0.4);
+}
+
+/* Animación para la aparición de los nodos */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Animaciones de flotación para los nodos */
+@keyframes floatX {
+  from {
+    margin-left: -8px;
+  }
+  to {
+    margin-left: 8px;
+  }
+}
+
+@keyframes floatY {
+  from {
+    margin-top: -6px;
+  }
+  to {
+    margin-top: 6px;
+  }
+}
+
+/* Animación de pulso para los iconos */
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(247, 148, 29, 0.5);
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(247, 148, 29, 0.8);
+  }
+}
+
+/* Animación de rotación lenta para el anillo */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg) scale(1.1);
+  }
+  to {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Animación de expansión para los círculos concéntricos */
+@keyframes expand-slow {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.animate-expand-slow {
+  animation: expand-slow 4s ease-out infinite;
+}
+
+.animation-delay-500 {
+  animation-delay: 1.5s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 3s;
+}
+
+/* Partículas flotantes */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particles::before,
+.particles::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(247, 148, 29, 0.2) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: particlesDrift 20s linear infinite;
+  opacity: 0.3;
+}
+
+.particles::after {
+  background-size: 20px 20px;
+  animation-duration: 30s;
+  animation-direction: reverse;
+  opacity: 0.2;
+}
+
+@keyframes particlesDrift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+/* Añadir gradiente radial para efectos de luz */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Animación sutil de pulsación para botones */
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(247, 148, 29, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(247, 148, 29, 0.6);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s infinite;
+}
+
+/* Animación más suave para la etiqueta Popular */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(247, 148, 29, 0.5);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(247, 148, 29, 0.7);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite;
+}
+
+@keyframes subtle-pulse {
+  0% {
+    box-shadow: 0 0 15px rgba(26, 43, 95, 0.6), 0 0 30px rgba(26, 43, 95, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(26, 43, 95, 0.7), 0 0 40px rgba(26, 43, 95, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(26, 43, 95, 0.6), 0 0 30px rgba(26, 43, 95, 0.3);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s infinite;
+}
+
+/* Animación para el menú desplegable del footer móvil */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+/* Clases de utilidad para colores UPSLP */
+.bg-upslp-gradient {
+  background: linear-gradient(135deg, #1a2b5f 0%, #334c7d 100%);
+}
+
+.bg-orange-gradient {
+  background: linear-gradient(135deg, #f7941d 0%, #f7b166 100%);
+}
+
+.text-upslp {
+  color: #1a2b5f;
+}
+
+.text-upslp-orange {
+  color: #f7941d;
+}
+
+.border-upslp {
+  border-color: #1a2b5f;
+}
+
+.border-upslp-orange {
+  border-color: #f7941d;
+}
+
+.ring-upslp {
+  --tw-ring-color: #1a2b5f;
+}
+
+.ring-upslp-orange {
+  --tw-ring-color: #f7941d;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
